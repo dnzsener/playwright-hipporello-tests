@@ -315,4 +315,4 @@ Test otomasyonu ile ilgili sorularınız için:
 
 ---
 
-**🚀 Hipporello Admin Test Otomasyonu - Tam Otomatize Sistem** 
+**🚀 Hipporello Admin Test Otomasyonu - Tam Otomatize Sistem** # hipporello-test-automation
