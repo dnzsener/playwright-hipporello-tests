@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hipporello Admin Test Raporu</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+        }
+        .content {
+            padding: 30px;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            color: #333;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .test-list {
+            list-style: none;
+            padding: 0;
+        }
+        .test-item {
+            background: #f8f9fa;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+        .test-item.passed {
+            border-left-color: #28a745;
+        }
+        .test-item.failed {
+            border-left-color: #dc3545;
+        }
+        .test-name {
+            font-weight: bold;
+            color: #333;
+        }
+        .test-duration {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .performance-chart {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .chart-bar {
+            background: #667eea;
+            height: 20px;
+            border-radius: 10px;
+            margin: 5px 0;
+            position: relative;
+        }
+        .chart-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Hipporello Admin</h1>
+            <p>Kapsamlı Test Otomasyonu Raporu</p>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="total-tests">0</div>
+                <div class="stat-label">Toplam Test</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="passed-tests">0</div>
+                <div class="stat-label">Başarılı</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="failed-tests">0</div>
+                <div class="stat-label">Başarısız</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="success-rate">0%</div>
+                <div class="stat-label">Başarı Oranı</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>📊 Test Sonuçları</h2>
+                <div id="test-results">
+                    <!-- Test sonuçları buraya gelecek -->
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>⚡ Performans Metrikleri</h2>
+                <div class="performance-chart">
+                    <div class="chart-label">
+                        <span>Ana Sayfa Yükleme</span>
+                        <span id="main-page-time">0ms</span>
+                    </div>
+                    <div class="chart-bar" style="width: 0%" id="main-page-bar"></div>
+                    
+                    <div class="chart-label">
+                        <span>Menü Navigasyon</span>
+                        <span id="menu-nav-time">0ms</span>
+                    </div>
+                    <div class="chart-bar" style="width: 0%" id="menu-nav-bar"></div>
+                    
+                    <div class="chart-label">
+                        <span>Workspace Seçimi</span>
+                        <span id="workspace-time">0ms</span>
+                    </div>
+                    <div class="chart-bar" style="width: 0%" id="workspace-bar"></div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>🔍 Test Kategorileri</h2>
+                <ul class="test-list">
+                    <li class="test-item passed">
+                        <div class="test-name">🔐 Authentication Testleri</div>
+                        <div class="test-duration">Session yönetimi ve güvenlik kontrolleri</div>
+                    </li>
+                    <li class="test-item passed">
+                        <div class="test-name">🧭 Menü Navigasyon Testleri</div>
+                        <div class="test-duration">Tüm menü öğelerinin navigasyon kontrolü</div>
+                    </li>
+                    <li class="test-item passed">
+                        <div class="test-name">🏢 Workspace Yönetimi</div>
+                        <div class="test-duration">42 workspace'in yönetimi ve filtreleme</div>
+                    </li>
+                    <li class="test-item passed">
+                        <div class="test-name">📱 Responsive Testleri</div>
+                        <div class="test-duration">Mobil, tablet ve desktop görünümleri</div>
+                    </li>
+                    <li class="test-item passed">
+                        <div class="test-name">⚡ Performans Testleri</div>
+                        <div class="test-duration">Sayfa yükleme hızları ve optimizasyon</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🔄 Otomatik Test Raporu | Hipporello Admin | Playwright</p>
+            <p>Rapor Tarihi: <span id="report-date"></span></p>
+        </div>
+    </div>
+    
+    <script>
+        // Rapor tarihini ayarla
+        document.getElementById('report-date').textContent = new Date().toLocaleDateString('tr-TR');
+        
+        // Test sonuçlarını simüle et (gerçek verilerle değiştirilecek)
+        function updateStats() {
+            document.getElementById('total-tests').textContent = '25';
+            document.getElementById('passed-tests').textContent = '23';
+            document.getElementById('failed-tests').textContent = '2';
+            document.getElementById('success-rate').textContent = '92%';
+            
+            // Performans metrikleri
+            document.getElementById('main-page-time').textContent = '1.2s';
+            document.getElementById('menu-nav-time').textContent = '0.8s';
+            document.getElementById('workspace-time').textContent = '0.5s';
+            
+            // Progress bar'ları güncelle
+            document.getElementById('main-page-bar').style.width = '60%';
+            document.getElementById('menu-nav-bar').style.width = '40%';
+            document.getElementById('workspace-bar').style.width = '25%';
+        }
+        
+        updateStats();
+    </script>
+</body>
+</html> 

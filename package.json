@@ -1,0 +1,29 @@
+{
+  "name": "hh",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:server": "playwright test --project=chromium --reporter=list,html",
+    "test:ci": "playwright test --project=chromium --reporter=junit,html",
+    "test:smoke": "playwright test auth.spec.ts form-creation.spec.ts --project=chromium",
+    "test:auth": "playwright test auth.spec.ts",
+    "test:form": "playwright test form-creation.spec.ts",
+    "test:portal": "playwright test user-portal-customization.spec.ts",
+    "test:multi": "playwright test multi-environment.spec.ts",
+    "test:prod": "TEST_ENV=prod playwright test multi-environment.spec.ts",
+    "test:staging": "TEST_ENV=staging playwright test multi-environment.spec.ts",
+    "test:qa": "TEST_ENV=qa playwright test multi-environment.spec.ts",
+    "test:all-env": "npm run test:prod && npm run test:staging && npm run test:qa",
+    "show-env": "node scripts/show-environments.js",
+    "install:browsers": "playwright install chromium",
+    "test:install": "npm run install:browsers && npm run test:server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
